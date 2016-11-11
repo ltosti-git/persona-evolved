@@ -27,7 +27,7 @@ console.log('App');
 
     function config($routeProvider){ console.log('Route');
       $routeProvider
-        .when('/azienda', {
+        .when('/', {
           templateUrl:'/App/view/azienda/template/azienda.template.html',
           controller:'aziendaController',
           controllerAs: 'vm'
