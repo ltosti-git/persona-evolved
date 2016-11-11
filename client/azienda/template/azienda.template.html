@@ -10,15 +10,17 @@
       <th>Dipenenti</th>
       <th>Fatturato</th>
       <th>Commesse</th>
+      <th>Cancella</th>
     </tr>
   </thead>
   <tbody>
     <tr ng-repeat="azienda in vm.azienda track by $index" ng-click="vm.detailsAzienda(azienda);">
       <td ng-bind="azienda._id" ></td>
       <td ng-bind="azienda.nome" ></td>
+      <td ng-bind="azienda.tipo" ></td>
       <td ng-bind="azienda.dipendenti" ></td>
       <td ng-bind="azienda.fatturato" ></td>
-      <td ng-bind="azienda.commesse" ><span ng-bind="azienda.commesseTot"></span></td>
+      <td>{{azienda.commesse}} / {{azienda.commesseTot}} </td>
       <td ng-click="vm.deleteMyAzienda(azienda._id)">X</td>
     </tr>
   </tbody>
@@ -33,7 +35,7 @@
     </div>
     <div class="form-group">
       <label for="health">Tipo</label>
-      <input ng-model="vm.newAzienda.tipo" type="number" class="form-control" id="health" placeholder="Tipo">
+      <input ng-model="vm.newAzienda.tipo" type="text" class="form-control" id="health" placeholder="Tipo">
     </div>
     <div class="form-group">
       <label for="mana">Dipendenti</label>
@@ -41,11 +43,12 @@
     </div> <br/><br/>
     <div class="form-group">
       <label for="powers">Fatturato</label>
-      <input ng-model="vm.newAzienda.fatturato" type="text" class="form-control" id="powers" placeholder="Fatturato">
+      <input ng-model="vm.newAzienda.fatturato" type="number" class="form-control" id="powers" placeholder="Fatturato">
     </div>
     <div class="form-group">
       <label for="powers">Commesse / Commesse TOT</label>
-      <input ng-model="vm.newAzienda.commesse" type="text" class="form-control" id="powers" placeholder="Commesse/Commesse TOT">
+      <input ng-model="vm.newAzienda.commesse" type="number" class="form-control" id="powers" placeholder="Commesse"> /
+      <input ng-model="vm.newAzienda.commesseTot" type="number" class="form-control" id="powers" placeholder="Commesse TOT">
     </div>
     <button ng-click="vm.saveMyAzienda(vm.newAzienda);" type="submit" class="btn btn-default">Salva</button>
   </div>

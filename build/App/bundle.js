@@ -61,13 +61,13 @@ console.log('App');
       vm.detailsAzienda = function(azienda) {
         //vm.newAzienda = angular.copy(azienda);
         vm.newAzienda.id = azienda._id;
-        // vm.newAzienda.name = azienda.name;
-        // vm.newAzienda.avatar = azienda.avatar;
-        // vm.newAzienda.health = azienda.health;
-        // vm.newAzienda.mana = azienda.mana;
-        // vm.newAzienda.hasPowers = azienda.hasPowers;
-        // vm.newAzienda.weapons = azienda.weapons;
-        $location.path('/azienda/details/' + vm.newAzienda.id);
+        vm.newAzienda.nome = azienda.nome;
+        vm.newAzienda.tipo = azienda.tipo;
+        vm.newAzienda.dipendenti = azienda.dipendenti;
+        vm.newAzienda.fatturato = azienda.fatturato;
+        vm.newAzienda.commesse = azienda.commesse;
+        vm.newAzienda.commesseTot = azienda.commesseTot;
+        //$location.path('/azienda/details/' + vm.newAzienda.id);
       }
 
       vm.add = function() {
