@@ -1,0 +1,31 @@
+.tableClass{
+  border: 1px solid black;
+  text-align: center;
+  display: block;
+  /*float: left;*/
+}
+
+.marginTop1em{
+  margin-top:1em;
+}
+
+.myClass{
+  color:#fff;
+  background: #E6E6FA;
+}
+
+.tableClass{
+  border: 1px solid black;
+  text-align: center;
+  display: block;
+  /*float: left;*/
+}
+
+.marginTop1em{
+  margin-top:1em;
+}
+
+.myClass{
+  color:#fff;
+  background: #E6E6FA;
+}

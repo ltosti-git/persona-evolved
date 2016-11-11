@@ -1,0 +1,54 @@
+<span ng-init="vm.getMyAzienda()"></span>
+<div class="container">
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Avatar</th>
+      <th>Nome</th>
+      <th>Health</th>
+      <th>Mana</th>
+      <th>Has Powers</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="azienda in vm.azienda track by $index" ng-click="vm.detailsAzienda(azienda);">
+      <td ng-bind="azienda._id" ></td>
+      <td><img style="width:55px;" ng-src="{{azienda.avatar}}" alt="{{azienda.name}}"/></span>
+      <td ng-bind="azienda.name" ></td>
+      <td ng-bind="azienda.health" ></td>
+      <td ng-bind="azienda.mana" ></td>
+      <td ng-bind="azienda.hasPowers" ></td>
+      <td ng-click="vm.deleteMyAzienda(azienda._id)">X</td>
+    </tr>
+  </tbody>
+</table>
+<button type="button" ng-click="vm.add();" class="btn btn-default" name="add">Aggiungi</button>
+<br/><br/>
+  <div class="form-inline">
+    <input type="hidden" ng-model="vm.newAzienda.id" name="id" value="">
+    <div class="form-group">
+      <label for="nome">Nome</label>
+      <input ng-model="vm.newAzienda.name" type="text" class="form-control" id="nome" placeholder="Nome">
+    </div>
+    <div class="form-group">
+      <label for="nome">Avatar</label>
+      <input ng-model="vm.newAzienda.avatar" type="text" class="form-control" id="nome" placeholder="Avatar">
+    </div>
+    <div class="form-group">
+      <label for="health">Health</label>
+      <input ng-model="vm.newAzienda.health" type="number" class="form-control" id="health" placeholder="Health">
+    </div>
+    <div class="form-group">
+      <label for="mana">Mana</label>
+      <input ng-model="vm.newAzienda.mana" type="number" class="form-control" id="mana" placeholder="Mana">
+    </div> <br/><br/>
+    <div class="form-group">
+      <label for="powers">Has Powers</label>
+      <input ng-model="vm.newAzienda.hasPowers" type="text" class="form-control" id="powers" placeholder="Powers">
+    </div>    
+    <button ng-click="vm.saveMyAzienda(vm.newAzienda);" type="submit" class="btn btn-default">Salva</button>
+  </div>
+</div>

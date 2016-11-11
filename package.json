@@ -1,0 +1,51 @@
+{
+  "name": "angular-course",
+  "version": "1.0.0",
+  "description": ",-----.,--.                  ,--. ,---.   ,--.,------.  ,------.     '  .--./|  | ,---. ,--.,--. ,-|  || o   \\  |  ||  .-.  \\ |  .---'     |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \\  :|  `--,      '  '--'\\|  |' '-' ''  ''  '\\ `-' | .'  /   |  ||  '--'  /|  `---.      `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'     -----------------------------------------------------------------",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "array-flatten": "^2.1.0",
+    "body-parser": "^1.15.2",
+    "bootstrap": "^3.3.7",
+    "content-disposition": "^0.5.1",
+    "content-type": "^1.0.2",
+    "debug": "^2.2.0",
+    "depd": "^1.1.0",
+    "express": "^4.14.0",
+    "finalhandler": "^0.5.0",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-eslint": "^3.0.1",
+    "gulp-ng-config": "^1.3.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-util": "^3.0.7",
+    "gulp-watch": "^4.3.9",
+    "jquery": "^3.1.1",
+    "livereload": "^0.6.0",
+    "merge-descriptors": "^1.0.1",
+    "methods": "^1.1.2",
+    "mongoose": "^4.6.3",
+    "opn": "^4.0.2",
+    "parseurl": "^1.3.1",
+    "path-to-regexp": "^1.6.0",
+    "qs": "^6.3.0",
+    "serve-favicon": "^2.3.0",
+    "utils-merge": "^1.0.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChristianP93/Artoo-Campus.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ChristianP93/Artoo-Campus/issues"
+  },
+  "homepage": "https://github.com/ChristianP93/Artoo-Campus#readme"
+}
