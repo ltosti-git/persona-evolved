@@ -39,7 +39,7 @@ module.exports = function() {
     };
 
     //AGGIORNAMENTO DI UN EROE
-    var update = function(req, res) {
+    var update = function(req, res) { console.log(req.body);
         var id = req.params.id;
         Azienda.findByIdAndUpdate(id, req.body, {new: true})
             .then(function(data) {
