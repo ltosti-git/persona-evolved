@@ -39,11 +39,11 @@ console.log('App');
   'use strict';
 
   angular.module('App.azienda')
-    .controller('AziendaController', AziendaController);
+    .controller('aziendaController', aziendaController);
 
-    AziendaController.$inject = ['AziendaService', '$location'];
+    aziendaController.$inject = ['AziendaService', '$location'];
 
-    function AziendaController(AziendaService, $location){ console.log('Controller');
+    function aziendaController(AziendaService, $location){ console.log('Controller');
       var vm = this;
       vm.newAzienda = {};
 
