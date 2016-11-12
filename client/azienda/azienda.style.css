@@ -1,6 +1,12 @@
 .md-flex {
         text-align: center;
+        height: 80px;
 }
 
 .selectdemoBasicUsage md-input-container {
   margin-right: 10px; }
+
+.md-raised {
+        height: 40px;
+        float: right;
+}

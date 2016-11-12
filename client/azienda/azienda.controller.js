@@ -48,7 +48,7 @@
       };
 
       vm.getMyAziendeFake = function() {
-        vm.aziendeFake = AziendaService.getAziendeFake(); 
+        vm.aziendeFake = AziendaService.getAziendeFake();
         return;
       };
 
@@ -63,6 +63,45 @@
         //   return err;
         // });
       };
+      //
+      // vm.google.charts.load('current', {'packages':['line']});
+      // vm.google.charts.setOnLoadCallback(vm.drawChart);
+
+vm.drawChart = function() {
+
+         vm.data = new google.visualization.DataTable();
+         vm.data.addColumn('string', 'Month');
+         vm.data.addColumn('number', vm.newAzienda.nome);
+         vm.data.addColumn('number', 'Produttività media imprese circostanti');
+
+         vm.data.addRows([
+           ['Gennaio',  70, 60],
+           ['Febbraio',  75, 63],
+           ['Marzo',  41, 57],
+           ['Aprile',  32, 21],
+           ['Maggio',  61, 80],
+           ['Giugno',   59, 84],
+           ['Luglio',   71, 81],
+           ['Agosto',  62, 90],
+           ['Settembre',  13, 42],
+           ['Ottobre', 50, 30],
+           ['Novembre',  61,  79],
+           ['Dicembre',  66,  84]
+         ]);
+
+         vm.options = {
+           chart: {
+             title: 'Volume di vendita su scala mensile',
+             subtitle: 'rispetto alla media dei volumi di vendita delle aziende circostanti'
+           },
+           width: 900,
+           height: 500
+         };
+
+         vm.chart = new google.charts.Line(document.getElementById('linechart_material'));
+
+         vm.chart.draw(vm.data, vm.options);
+};
 
       vm.detailsAzienda = function(azienda) {
         //vm.newAzienda = angular.copy(azienda);
