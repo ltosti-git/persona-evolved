@@ -4,10 +4,11 @@ var Schema = mongoose.Schema;
 var aziendaSchema = new Schema({
 	nome: String,
 	tipo: String,
-	dipendenti: Number,
-	fatturato: Number,
+	dipendenti: String,
+	fatturato: String,
 	commesse: Number,
-	commesseTot: Number
+	commesseTot: Number,
+	reparti: String
 });
 
 aziendaSchema.methods.getName = function(){

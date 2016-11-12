@@ -1,11 +1,11 @@
 var mongoose = require('mongoose');
-var Azienda = require('./azienda.model');
+var Dipendenti = require('./dipendenti.model.js');
 // console.log('controller-server');
 module.exports = function() {
 
     //LISTA DI TUTTI GLI EROI
     var list = function(req, res) {
-        Azienda.find().exec()
+        Dipendenti.find().exec()
             .then(function(data) {
                 res.json(data);
             });
@@ -14,12 +14,12 @@ module.exports = function() {
     //DETTAGLIO DI UN SINGOLO EROE
     var detail = function(req, res) {
         var id = req.params.id;
-        Azienda.findById(id)
+        Dipendenti.findById(id)
             .exec()
             .then(function(data) {
                 res.status(200).send(data);
             },function(data) {
-                res.status(404).send({'error':'Azienda non trovato nel database'});
+                res.status(404).send({'error':'Dipendenti non trovato nel database'});
             })
             .catch(function(err) {
                 res.status(500).send(err);
@@ -28,8 +28,8 @@ module.exports = function() {
 
     //CREAZIONE DI UN NUOVO EROE
     var create = function(req, res) {
-        var newAzienda = new Azienda(req.body);
-        newAzienda.save()
+        var newDipendenti = new Dipendenti(req.body);
+        newDipendenti.save()
             .then(function(data) {
                 res.status(200).send(data);
             })
@@ -41,11 +41,11 @@ module.exports = function() {
     //AGGIORNAMENTO DI UN EROE
     var update = function(req, res) { //console.log(req.params.id);
         var id = req.params.id;
-        Azienda.findByIdAndUpdate(id, req.body, {new: true})
+        Dipendenti.findByIdAndUpdate(id, req.body, {new: true})
             .then(function(data) {
                 res.status(200).send(data);
             },function() {
-                res.status(404).send({'error':'Azienda non trovato nel database'});
+                res.status(404).send({'error':'Dipendenti non trovato nel database'});
             })
             .catch(function(err) {
                 res.status(500).send(err);
@@ -54,14 +54,14 @@ module.exports = function() {
 
     var remove = function(req, res) {
         var id = req.params.id;
-        Azienda.findById(id).exec()
-            .then(function(azienda) {
-                return azienda.remove();
+        Dipendenti.findById(id).exec()
+            .then(function(dipendenti) {
+                return dipendenti.remove();
             })
             .then(function() {
-                res.status(200).send('Azienda rimosso dal database');
+                res.status(200).send('Dipendenti rimosso dal database');
             }, function() {
-                res.status(404).send({'error':'Azienda non trovato nel database'});
+                res.status(404).send({'error':'Dipendenti non trovato nel database'});
             })
             .catch(function(err) {
                 res.status(500).send(err);

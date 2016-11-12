@@ -1,4 +1,5 @@
-<span ng-init="vm.getMyAzienda()"></span>
+<span ng-init="vm.getMyAzienda();"></span>
+<span ng-init="vm.getMyDipendenti();"></span>
 <div class="container">
 
 <table class="table table-bordered table-striped">
@@ -7,7 +8,8 @@
       <th>Id</th>
       <th>Nome</th>
       <th>Tipo</th>
-      <th>Dipenenti</th>
+      <th>Dipendenti</th>
+      <th>Reparti</th>
       <th>Fatturato</th>
       <th>Commesse</th>
       <th>Cancella</th>
@@ -19,13 +21,14 @@
       <td ng-bind="azienda.nome" ></td>
       <td ng-bind="azienda.tipo" ></td>
       <td ng-bind="azienda.dipendenti" ></td>
+      <td ng-bind="azienda.reparti" ></td>
       <td ng-bind="azienda.fatturato" ></td>
       <td>{{azienda.commesse}} / {{azienda.commesseTot}} </td>
       <td ng-click="vm.deleteMyAzienda(azienda._id)">X</td>
     </tr>
   </tbody>
 </table>
-<button type="button" ng-click="vm.add();" class="btn btn-default" name="add">Aggiungi</button>
+
 <br/><br/>
   <div class="form-inline">
     <input type="hidden" ng-model="vm.newAzienda.id" name="id" value="">
@@ -36,30 +39,30 @@
     <div class="form-group">
       <label for="">Tipo</label>
       <select ng-model="vm.newAzienda.tipo" class="form-control">
-        <option value="">INDUSTRIE ALIMENTARI</option>
-        <option value="">INDUSTRIA DELLE BEVANDE</option>
-        <option value="">INDUSTRIA DEL TABACCO</option>
-        <option value="">INDUSTRIE TESSILI</option>
-        <option value="">CONFEZIONE DI ARTICOLI DI ABBIGLIAMENTO...</option>
-        <option value="">FABBRICAZIONE DI ARTICOLI IN PELLE E SIMILI</option>
-        <option value="">INDUSTRIA DEL LEGNO E DEI PRODOTTI IN LEGNO E SUGHERO...</option>
-        <option value="">FABBRICAZIONE DI CARTA E DI PRODOTTI DI CARTA</option>
-        <option value="">STAMPA E RIPRODUZIONE DI SUPPORTI REGISTRATI</option>
-        <option value="">FABBRICAZIONE DI COKE E PRODOTTI DERIVANTI DALLA RAFFINAZIONE DEL PETROLIO</option>
-        <option value="">FABBRICAZIONE DI PRODOTTI CHIMICI</option>
-        <option value="">FABBRICAZIONE DI PRODOTTI FARMACEUTICI DI BASE E DI PREPARATI FARMACEUTICI</option>
-        <option value="">FABBRICAZIONE DI ARTICOLI IN GOMMA E MATERIE PLASTICHE</option>
-        <option value="">FABBRICAZIONE DI ALTRI PRODOTTI DELLA LAVORAZIONE DI MINERALI NON METALLIFERI</option>
-        <option value="">METALLURGIA</option>
-        <option value="">FABBRICAZIONE DI PRODOTTI IN METALLO (ESCLUSI MACCHINARI E ATTREZZATURE)</option>
-        <option value="">FABBRICAZIONE DI COMPUTER E PRODOTTI DI ELETTRONICA E OTTICA...</option>
-        <option value="">FABBRICAZIONE DI APPARECCHIATURE ELETTRICHE...</option>
-        <option value="">FABBRICAZIONE DI MACCHINARI ED APPARECCHIATURE NCA</option>
-        <option value="">FABBRICAZIONE DI AUTOVEICOLI, RIMORCHI E SEMIRIMORCHI</option>
-        <option value="">FABBRICAZIONE DI ALTRI MEZZI DI TRASPORTO</option>
-        <option value="">FABBRICAZIONE DI MOBILI</option>
-        <option value="">ALTRE INDUSTRIE MANIFATTURIERE</option>
-        <option value="">RIPARAZIONE, MANUTENZIONE ED INSTALLAZIONE DI MACCHINE ED APPARECCHIATURE</option>
+        <option value="INDUSTRIE ALIMENTARI">INDUSTRIE ALIMENTARI</option>
+        <option value="INDUSTRIA DELLE BEVANDE">INDUSTRIA DELLE BEVANDE</option>
+        <option value="INDUSTRIA DEL TABACCO">INDUSTRIA DEL TABACCO</option>
+        <option value="INDUSTRIE TESSILI">INDUSTRIE TESSILI</option>
+        <option value="CONFEZIONE DI ARTICOLI DI ABBIGLIAMENTO">CONFEZIONE DI ARTICOLI DI ABBIGLIAMENTO...</option>
+        <option value="FABBRICAZIONE DI ARTICOLI IN PELLE E SIMILI">FABBRICAZIONE DI ARTICOLI IN PELLE E SIMILI</option>
+        <option value="INDUSTRIA DEL LEGNO E DEI PRODOTTI IN LEGNO E SUGHERO">INDUSTRIA DEL LEGNO E DEI PRODOTTI IN LEGNO E SUGHERO...</option>
+        <option value="FABBRICAZIONE DI CARTA E DI PRODOTTI DI CARTA">FABBRICAZIONE DI CARTA E DI PRODOTTI DI CARTA</option>
+        <option value="STAMPA E RIPRODUZIONE DI SUPPORTI REGISTRATI">STAMPA E RIPRODUZIONE DI SUPPORTI REGISTRATI</option>
+        <option value="FABBRICAZIONE DI COKE E PRODOTTI DERIVANTI DALLA RAFFINAZIONE DEL PETROLIO">FABBRICAZIONE DI COKE E PRODOTTI DERIVANTI DALLA RAFFINAZIONE DEL PETROLIO</option>
+        <option value="FABBRICAZIONE DI PRODOTTI CHIMICI">FABBRICAZIONE DI PRODOTTI CHIMICI</option>
+        <option value="FABBRICAZIONE DI PRODOTTI FARMACEUTICI DI BASE E DI PREPARATI FARMACEUTICI">FABBRICAZIONE DI PRODOTTI FARMACEUTICI DI BASE E DI PREPARATI FARMACEUTICI</option>
+        <option value="FABBRICAZIONE DI ARTICOLI IN GOMMA E MATERIE PLASTICHE">FABBRICAZIONE DI ARTICOLI IN GOMMA E MATERIE PLASTICHE</option>
+        <option value="FABBRICAZIONE DI ALTRI PRODOTTI DELLA LAVORAZIONE DI MINERALI NON METALLIFERI">FABBRICAZIONE DI ALTRI PRODOTTI DELLA LAVORAZIONE DI MINERALI NON METALLIFERI</option>
+        <option value="METALLURGIA">METALLURGIA</option>
+        <option value="FABBRICAZIONE DI PRODOTTI IN METALLO (ESCLUSI MACCHINARI E ATTREZZATURE)">FABBRICAZIONE DI PRODOTTI IN METALLO (ESCLUSI MACCHINARI E ATTREZZATURE)</option>
+        <option value="FABBRICAZIONE DI COMPUTER E PRODOTTI DI ELETTRONICA E OTTICA">FABBRICAZIONE DI COMPUTER E PRODOTTI DI ELETTRONICA E OTTICA...</option>
+        <option value="FABBRICAZIONE DI APPARECCHIATURE ELETTRICHE">FABBRICAZIONE DI APPARECCHIATURE ELETTRICHE...</option>
+        <option value="FABBRICAZIONE DI MACCHINARI ED APPARECCHIATURE NCA">FABBRICAZIONE DI MACCHINARI ED APPARECCHIATURE NCA</option>
+        <option value="FABBRICAZIONE DI AUTOVEICOLI, RIMORCHI E SEMIRIMORCHI">FABBRICAZIONE DI AUTOVEICOLI, RIMORCHI E SEMIRIMORCHI</option>
+        <option value="FABBRICAZIONE DI ALTRI MEZZI DI TRASPORTO">FABBRICAZIONE DI ALTRI MEZZI DI TRASPORTO</option>
+        <option value="FABBRICAZIONE DI MOBILI">FABBRICAZIONE DI MOBILI</option>
+        <option value="ALTRE INDUSTRIE MANIFATTURIERE">ALTRE INDUSTRIE MANIFATTURIERE</option>
+        <option value="RIPARAZIONE, MANUTENZIONE ED INSTALLAZIONE DI MACCHINE ED APPARECCHIATURE">RIPARAZIONE, MANUTENZIONE ED INSTALLAZIONE DI MACCHINE ED APPARECCHIATURE</option>
       </select>
     </div>
     <div class="form-group">
@@ -68,6 +71,28 @@
       <input ng-model="vm.newAzienda.dipendenti" type="radio" class="form-control" value="dip2"> 11-50
       <input ng-model="vm.newAzienda.dipendenti" type="radio" class="form-control" value="dip3"> 51-250
       <input ng-model="vm.newAzienda.dipendenti" type="radio" class="form-control" value="dip4"> 250+
+    </div> <br/>
+    <div class="form-group">
+      <label for="">Reparti</label>
+      <span ng-repeat="reparto in vm.reparti">
+      <input
+         type="checkbox"
+         name="selectedFruits[]"
+         value="{{reparto}}"
+         ng-click="vm.toggleSelection(reparto)"
+       > {{reparto}}
+      </span>
+      <!-- <label for="">Reparti</label>
+      <input ng-model="vm.newAzienda.reparti" type="checkbox" class="form-control" value="modelleria"> Modelleria
+      <input ng-model="vm.newAzienda.reparti" type="checkbox" class="form-control" value="taglio"> Taglio
+      <input ng-model="vm.newAzienda.reparti" type="checkbox" class="form-control" value="tranceria"> Tranceria
+      <input ng-model="vm.newAzienda.reparti" type="checkbox" class="form-control" value="giunteria"> Giunteria
+      <input ng-model="vm.newAzienda.reparti" type="checkbox" class="form-control" value="montaggio"> Montaggio
+      <input ng-model="vm.newAzienda.reparti" type="checkbox" class="form-control" value="fondo"> Fondo
+      <input ng-model="vm.newAzienda.reparti" type="checkbox" class="form-control" value="finissaggio"> Finissaggio
+      <input ng-model="vm.newAzienda.reparti" type="checkbox" class="form-control" value="guarnitura"> Guarnitura
+      <input ng-model="vm.newAzienda.reparti" type="checkbox" class="form-control" value="magazzino"> Magazzino
+      <input ng-model="vm.newAzienda.reparti" type="checkbox" class="form-control" value="manutenzione"> Manutenzione -->
     </div> <br/>
     <div class="form-group">
       <label for="">Fatturato</label>
@@ -82,5 +107,11 @@
       <input ng-model="vm.newAzienda.commesseTot" type="number" class="form-control" id="powers" placeholder="Commesse TOT">
     </div>
     <button ng-click="vm.saveMyAzienda(vm.newAzienda);" type="submit" class="btn btn-default">Salva</button>
+  </div>
+</div>
+
+<div class="container">
+  <div ng-repeat="dipendente in vm.dipendenti track by $index">
+    <span ng-bind="dipendente.nome"></span>
   </div>
 </div>

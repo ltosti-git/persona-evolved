@@ -10,11 +10,47 @@
       var vm = this;
       vm.newAzienda = {};
 
+      vm.reparti = [
+      'modelleria',
+      'taglio',
+      'tranceria',
+      'giunteria',
+      'montaggio',
+      'fondo',
+      'finissaggio',
+      'guarnitura',
+      'magazzino',
+      'manutenzione'
+    ];
+
+    vm.selection = [];
+
+    vm.toggleSelection = function toggleSelection(reparto) {console.log(reparto);
+      var idx = vm.reparti.indexOf(reparto);console.log(idx);
+      if (idx > -1) {
+        vm.selection.push(reparto);console.log(vm.selection);
+      }
+      else {
+        vm.selection.splice(idx, 1);
+      }
+    };
+
+
       vm.getMyAzienda = function(){
         return AziendaService.getAzienda()
         // then catch promise
         .then(function(data){
-          vm.azienda = data;
+          vm.azienda = data; //console.log(vm.azienda['']);
+          return
+        }).catch(function(err){
+          return err;
+        });
+      };
+
+      vm.getMyDipendenti = function(){
+        return AziendaService.getDipendenti()
+        .then(function(data){ //console.log(data);
+          vm.dipendenti = data;
           return
         }).catch(function(err){
           return err;
@@ -30,12 +66,11 @@
         vm.newAzienda.fatturato = azienda.fatturato;
         vm.newAzienda.commesse = azienda.commesse;
         vm.newAzienda.commesseTot = azienda.commesseTot;
+        vm.newAzienda.reparti = azienda.selection;
         //$location.path('/azienda/details/' + vm.newAzienda.id);
       }
 
-      vm.add = function() {
-        $location.path('/azienda/details');
-      }
+
 
       vm.saveMyAzienda = function() { console.log(vm.newAzienda.id);
 
