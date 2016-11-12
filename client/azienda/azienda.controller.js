@@ -9,6 +9,7 @@
     function aziendaController(AziendaService, $location){ //console.log('Controller');
       var vm = this;
       vm.newAzienda = {};
+      vm.resolve = map;
 
       vm.reparti = [
       'modelleria',
@@ -22,7 +23,6 @@
       'magazzino',
       'manutenzione'
     ];
-
 
       vm.getMyAzienda = function(){
         return AziendaService.getAzienda()
@@ -65,12 +65,13 @@
         //$location.path('/azienda/details/' + vm.newAzienda.id);
       }
 
-      vm.saveMyAzienda = function() { //console.log(vm.newAzienda);        
+      vm.saveMyAzienda = function() { //console.log(vm.newAzienda);
         if(!vm.newAzienda.id) { //console.log('save');
         return AziendaService.saveAzienda(vm.newAzienda)
           .then(function(){
-            vm.getMyAzienda();
-            return vm.newAzienda = {};
+            //vm.getMyAzienda();
+            $location.path('/map');
+            //return vm.newAzienda = {};
           }).catch(function(err){ console.log(err);
             return err;
           });

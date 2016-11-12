@@ -8,7 +8,15 @@
         .when('/', {
           templateUrl:'/App/view/azienda/template/azienda.template.html',
           controller:'aziendaController',
-          controllerAs: 'vm'
+          controllerAs: 'vm'//,
+          // resolve: {
+          //   map: function(AziendaService) {
+          //       var get = AziendaService.getAzienda();
+          //         return get;
+          //     }
+
+          //}
+
         });
     }
 })();

@@ -1,0 +1,15 @@
+<span ng-init="vm.getMyAzienda();"></span>
+<span ng-init="vm.getMyDipendenti();"></span>
+<span ng-init="vm.getMyAziendeFake();"></span>
+
+
+<div class="container" ng-repeat="user in vm.azienda">
+  <span>{{user.reparti}}</span>
+</div>
+<div class="container">
+  <div ng-repeat="dipendente in vm.dipendenti track by $index">
+    <span ng-bind="dipendente.nome"></span>
+  </div>
+<div class="">
+
+</div>
