@@ -114,8 +114,8 @@
         return AziendaService.saveAzienda(vm.newAzienda)
           .then(function(){
             //vm.getMyAzienda();
-            $location.path('/map');
-            //return vm.newAzienda = {};
+            //$location.path('/map');
+            return vm.newAzienda = {};
           }).catch(function(err){ console.log(err);
             return err;
           });
