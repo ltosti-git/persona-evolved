@@ -40,21 +40,28 @@
         return AziendaService.getAzienda()
         // then catch promise
         .then(function(data){
-          vm.azienda = data; //console.log(vm.azienda['']);
+          vm.azienda = data; //console.log(vm.azienda);
           return
         }).catch(function(err){
           return err;
         });
       };
 
+      vm.getMyAziendeFake = function() {
+        vm.aziendeFake = AziendaService.getAziendeFake(); 
+        return;
+      };
+
       vm.getMyDipendenti = function(){
-        return AziendaService.getDipendenti()
-        .then(function(data){ //console.log(data);
-          vm.dipendenti = data;
-          return
-        }).catch(function(err){
-          return err;
-        });
+        vm.dipendenti = AziendaService.getDipendenti();
+        return;
+
+        // .then(function(data){
+        //   vm.dipendenti = data; console.log(data);
+        //   return
+        // }).catch(function(err){
+        //   return err;
+        // });
       };
 
       vm.detailsAzienda = function(azienda) {
@@ -69,8 +76,6 @@
         vm.newAzienda.reparti = azienda.selection;
         //$location.path('/azienda/details/' + vm.newAzienda.id);
       }
-
-
 
       vm.saveMyAzienda = function() { console.log(vm.newAzienda.id);
 
