@@ -54,7 +54,6 @@
     function aziendaController(AziendaService, $location){ //console.log('Controller');
       var vm = this;
       vm.newAzienda = {};
-      vm.resolve = map;
 
       vm.reparti = [
       'modelleria',
