@@ -23,7 +23,6 @@
       'manutenzione'
     ];
 
-
       vm.getMyAzienda = function(){
         return AziendaService.getAzienda()
         // then catch promise
@@ -106,7 +105,8 @@
         if(!vm.newAzienda.id) { //console.log('save');
         return AziendaService.saveAzienda(vm.newAzienda)
           .then(function(){
-            vm.getMyAzienda();
+            //vm.getMyAzienda();
+            //$location.path('/map');
             return vm.newAzienda = {};
           }).catch(function(err){ console.log(err);
             return err;

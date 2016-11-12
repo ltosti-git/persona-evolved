@@ -32,7 +32,15 @@
         .when('/', {
           templateUrl:'/App/view/azienda/template/azienda.template.html',
           controller:'aziendaController',
-          controllerAs: 'vm'
+          controllerAs: 'vm'//,
+          // resolve: {
+          //   map: function(AziendaService) {
+          //       var get = AziendaService.getAzienda();
+          //         return get;
+          //     }
+
+          //}
+
         });
     }
 })();
@@ -61,7 +69,6 @@
       'magazzino',
       'manutenzione'
     ];
-
 
       vm.getMyAzienda = function(){
         return AziendaService.getAzienda()
@@ -145,7 +152,8 @@
         if(!vm.newAzienda.id) { //console.log('save');
         return AziendaService.saveAzienda(vm.newAzienda)
           .then(function(){
-            vm.getMyAzienda();
+            //vm.getMyAzienda();
+            //$location.path('/map');
             return vm.newAzienda = {};
           }).catch(function(err){ console.log(err);
             return err;
@@ -345,7 +353,7 @@
 
       function getMyAziendaDet(id, callback) { //console.log(id);
         callback = callback || angular.noop;
-        return edWeapons.get({'id': id}, function(data){
+        return edAzienda.get({'id': id}, function(data){
           return callback(data);
         }, function(err) {
           return callback(err);

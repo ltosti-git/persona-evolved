@@ -169,7 +169,7 @@
 
       function getMyAziendaDet(id, callback) { //console.log(id);
         callback = callback || angular.noop;
-        return edWeapons.get({'id': id}, function(data){
+        return edAzienda.get({'id': id}, function(data){
           return callback(data);
         }, function(err) {
           return callback(err);
