@@ -79,11 +79,10 @@
         <div layout="row">
                 <md-input-container>
                         <label>Reparti</label>
-                        <md-select ng-model="vm.newAzienda.reparto" multiple="">
+                        <md-select ng-model="vm.newAzienda.reparti" multiple="">
                                 <md-option value="{{reparto}}" ng-repeat="reparto in vm.reparti" ng-click="toggleSelection(reparto)">{{reparto}}</md-option>
                         </md-select>
                 </md-input-container>
-
 
                 <md-button ng-click="vm.saveMyAzienda(vm.newAzienda)" class="md-raised">Salva</md-button>
                 <md-button class="md-raised" ng-click="vm.drawChart()">Traccia grafico</md-button>

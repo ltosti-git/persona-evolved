@@ -6,7 +6,7 @@
 
     aziendaController.$inject = ['AziendaService', '$location'];
 
-    function aziendaController(AziendaService, $location){ console.log('Controller');
+    function aziendaController(AziendaService, $location){ //console.log('Controller');
       var vm = this;
       vm.newAzienda = {};
 
@@ -22,18 +22,6 @@
       'magazzino',
       'manutenzione'
     ];
-
-    vm.selection = [];
-
-    vm.toggleSelection = function toggleSelection(reparto) {console.log(reparto);
-      var idx = vm.reparti.indexOf(reparto);console.log(idx);
-      if (idx > -1) {
-        vm.selection.push(reparto);console.log(vm.selection);
-      }
-      else {
-        vm.selection.splice(idx, 1);
-      }
-    };
 
 
       vm.getMyAzienda = function(){
@@ -112,13 +100,12 @@ vm.drawChart = function() {
         vm.newAzienda.fatturato = azienda.fatturato;
         vm.newAzienda.commesse = azienda.commesse;
         vm.newAzienda.commesseTot = azienda.commesseTot;
-        vm.newAzienda.reparti = azienda.selection;
+        vm.newAzienda.reparti = azienda.tipo;
         //$location.path('/azienda/details/' + vm.newAzienda.id);
       }
 
-      vm.saveMyAzienda = function() { console.log(vm.newAzienda.id);
-
-        if(!vm.newAzienda.id) { console.log('save');
+      vm.saveMyAzienda = function() { //console.log(vm.newAzienda);        
+        if(!vm.newAzienda.id) { //console.log('save');
         return AziendaService.saveAzienda(vm.newAzienda)
           .then(function(){
             vm.getMyAzienda();
@@ -126,7 +113,7 @@ vm.drawChart = function() {
           }).catch(function(err){ console.log(err);
             return err;
           });
-        } else { console.log('edit');
+        } else { //console.log('edit');
           return AziendaService.editAzienda(vm.newAzienda)
           .then(function() {
             vm.getMyAzienda();
