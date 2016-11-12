@@ -68,8 +68,8 @@
 
                 <md-input-container>
                         <label>Reparti</label>
-                        <md-select ng-model="vm.newAzienda.reparto" multiple="">
-                                <md-option value="{{reparto}}" ng-repeat="reparto in vm.reparti" ng-click="toggleSelection(reparto)">{{reparto}}</md-option>
+                        <md-select ng-model="vm.newAzienda.reparti" multiple="{{false}}">
+                                <md-option value="{{reparto}}" ng-repeat="reparto in vm.reparti">{{reparto}}</md-option>
                         </md-select>
                 </md-input-container>
 
@@ -91,7 +91,7 @@
 
 
 
-<!-- 
+<!--
 <div class="container">
   <div ng-repeat="dipendente in vm.dipendenti track by $index">
     <span ng-bind="dipendente.nome"></span>

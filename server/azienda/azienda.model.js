@@ -8,7 +8,7 @@ var aziendaSchema = new Schema({
 	fatturato: String,
 	commesse: Number,
 	commesseTot: Number,
-	reparti: String
+	reparti: [String]
 });
 
 aziendaSchema.methods.getName = function(){

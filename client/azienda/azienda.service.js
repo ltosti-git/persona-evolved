@@ -6,7 +6,7 @@
 
     AziendaService.$inject = ['$resource'];
 
-    function AziendaService($resource){ console.log('Service');
+    function AziendaService($resource){ //console.log('Service');
 
       var Azienda = $resource('/azienda/', {azienda:'@azienda'}, {'getAll':{method: 'GET', isArray: true}, 'save': {method: 'POST'}});
       var delAzienda = $resource('/azienda/:id', {id:'@id'}, {'delete': {method: 'DELETE'}});
