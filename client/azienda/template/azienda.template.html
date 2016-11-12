@@ -1,8 +1,16 @@
 <span ng-init="vm.getMyAzienda();"></span>
 <span ng-init="vm.getMyDipendenti();"></span>
 <div class="container">
+        <md-toolbar class="md-tall">
+                <span flex=""></span>
+                <span class="md-flex">
+                        <h1>AZIENDA</h1>
+                </span>
+        </md-toolbar>
 
-<table class="table table-bordered table-striped">
+
+
+<!-- <table class="table table-bordered table-striped">
   <thead>
     <tr>
       <th>Id</th>
@@ -29,86 +37,89 @@
   </tbody>
 </table>
 
-<br/><br/>
-  <div class="form-inline">
-    <input type="hidden" ng-model="vm.newAzienda.id" name="id" value="">
-    <div class="form-group">
-      <label for="nome">Nome</label>
-      <input ng-model="vm.newAzienda.nome" type="text" class="form-control" id="nome" placeholder="Nome">
-    </div>
-    <div class="form-group">
-      <label for="">Tipo</label>
-      <select ng-model="vm.newAzienda.tipo" class="form-control">
-        <option value="INDUSTRIE ALIMENTARI">INDUSTRIE ALIMENTARI</option>
-        <option value="INDUSTRIA DELLE BEVANDE">INDUSTRIA DELLE BEVANDE</option>
-        <option value="INDUSTRIA DEL TABACCO">INDUSTRIA DEL TABACCO</option>
-        <option value="INDUSTRIE TESSILI">INDUSTRIE TESSILI</option>
-        <option value="CONFEZIONE DI ARTICOLI DI ABBIGLIAMENTO">CONFEZIONE DI ARTICOLI DI ABBIGLIAMENTO...</option>
-        <option value="FABBRICAZIONE DI ARTICOLI IN PELLE E SIMILI">FABBRICAZIONE DI ARTICOLI IN PELLE E SIMILI</option>
-        <option value="INDUSTRIA DEL LEGNO E DEI PRODOTTI IN LEGNO E SUGHERO">INDUSTRIA DEL LEGNO E DEI PRODOTTI IN LEGNO E SUGHERO...</option>
-        <option value="FABBRICAZIONE DI CARTA E DI PRODOTTI DI CARTA">FABBRICAZIONE DI CARTA E DI PRODOTTI DI CARTA</option>
-        <option value="STAMPA E RIPRODUZIONE DI SUPPORTI REGISTRATI">STAMPA E RIPRODUZIONE DI SUPPORTI REGISTRATI</option>
-        <option value="FABBRICAZIONE DI COKE E PRODOTTI DERIVANTI DALLA RAFFINAZIONE DEL PETROLIO">FABBRICAZIONE DI COKE E PRODOTTI DERIVANTI DALLA RAFFINAZIONE DEL PETROLIO</option>
-        <option value="FABBRICAZIONE DI PRODOTTI CHIMICI">FABBRICAZIONE DI PRODOTTI CHIMICI</option>
-        <option value="FABBRICAZIONE DI PRODOTTI FARMACEUTICI DI BASE E DI PREPARATI FARMACEUTICI">FABBRICAZIONE DI PRODOTTI FARMACEUTICI DI BASE E DI PREPARATI FARMACEUTICI</option>
-        <option value="FABBRICAZIONE DI ARTICOLI IN GOMMA E MATERIE PLASTICHE">FABBRICAZIONE DI ARTICOLI IN GOMMA E MATERIE PLASTICHE</option>
-        <option value="FABBRICAZIONE DI ALTRI PRODOTTI DELLA LAVORAZIONE DI MINERALI NON METALLIFERI">FABBRICAZIONE DI ALTRI PRODOTTI DELLA LAVORAZIONE DI MINERALI NON METALLIFERI</option>
-        <option value="METALLURGIA">METALLURGIA</option>
-        <option value="FABBRICAZIONE DI PRODOTTI IN METALLO (ESCLUSI MACCHINARI E ATTREZZATURE)">FABBRICAZIONE DI PRODOTTI IN METALLO (ESCLUSI MACCHINARI E ATTREZZATURE)</option>
-        <option value="FABBRICAZIONE DI COMPUTER E PRODOTTI DI ELETTRONICA E OTTICA">FABBRICAZIONE DI COMPUTER E PRODOTTI DI ELETTRONICA E OTTICA...</option>
-        <option value="FABBRICAZIONE DI APPARECCHIATURE ELETTRICHE">FABBRICAZIONE DI APPARECCHIATURE ELETTRICHE...</option>
-        <option value="FABBRICAZIONE DI MACCHINARI ED APPARECCHIATURE NCA">FABBRICAZIONE DI MACCHINARI ED APPARECCHIATURE NCA</option>
-        <option value="FABBRICAZIONE DI AUTOVEICOLI, RIMORCHI E SEMIRIMORCHI">FABBRICAZIONE DI AUTOVEICOLI, RIMORCHI E SEMIRIMORCHI</option>
-        <option value="FABBRICAZIONE DI ALTRI MEZZI DI TRASPORTO">FABBRICAZIONE DI ALTRI MEZZI DI TRASPORTO</option>
-        <option value="FABBRICAZIONE DI MOBILI">FABBRICAZIONE DI MOBILI</option>
-        <option value="ALTRE INDUSTRIE MANIFATTURIERE">ALTRE INDUSTRIE MANIFATTURIERE</option>
-        <option value="RIPARAZIONE, MANUTENZIONE ED INSTALLAZIONE DI MACCHINE ED APPARECCHIATURE">RIPARAZIONE, MANUTENZIONE ED INSTALLAZIONE DI MACCHINE ED APPARECCHIATURE</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="">Dipendenti</label>
-      <input ng-model="vm.newAzienda.dipendenti" type="radio" class="form-control" value="dip1"> >10
-      <input ng-model="vm.newAzienda.dipendenti" type="radio" class="form-control" value="dip2"> 11-50
-      <input ng-model="vm.newAzienda.dipendenti" type="radio" class="form-control" value="dip3"> 51-250
-      <input ng-model="vm.newAzienda.dipendenti" type="radio" class="form-control" value="dip4"> 250+
-    </div> <br/>
-    <div class="form-group">
-      <label for="">Reparti</label>
-      <span ng-repeat="reparto in vm.reparti">
-      <input
-         type="checkbox"
-         name="selectedFruits[]"
-         value="{{reparto}}"
-         ng-click="vm.toggleSelection(reparto)"
-       > {{reparto}}
-      </span>
-      <!-- <label for="">Reparti</label>
-      <input ng-model="vm.newAzienda.reparti" type="checkbox" class="form-control" value="modelleria"> Modelleria
-      <input ng-model="vm.newAzienda.reparti" type="checkbox" class="form-control" value="taglio"> Taglio
-      <input ng-model="vm.newAzienda.reparti" type="checkbox" class="form-control" value="tranceria"> Tranceria
-      <input ng-model="vm.newAzienda.reparti" type="checkbox" class="form-control" value="giunteria"> Giunteria
-      <input ng-model="vm.newAzienda.reparti" type="checkbox" class="form-control" value="montaggio"> Montaggio
-      <input ng-model="vm.newAzienda.reparti" type="checkbox" class="form-control" value="fondo"> Fondo
-      <input ng-model="vm.newAzienda.reparti" type="checkbox" class="form-control" value="finissaggio"> Finissaggio
-      <input ng-model="vm.newAzienda.reparti" type="checkbox" class="form-control" value="guarnitura"> Guarnitura
-      <input ng-model="vm.newAzienda.reparti" type="checkbox" class="form-control" value="magazzino"> Magazzino
-      <input ng-model="vm.newAzienda.reparti" type="checkbox" class="form-control" value="manutenzione"> Manutenzione -->
-    </div> <br/>
-    <div class="form-group">
-      <label for="">Fatturato</label>
-      <input ng-model="vm.newAzienda.fatturato" type="radio" class="form-control" value="fatt1"> < 2.000.000 €
-        <input ng-model="vm.newAzienda.fatturato" type="radio" class="form-control" value="fatt2"> 2.000.000 € - 10.000.000 €
-          <input ng-model="vm.newAzienda.fatturato" type="radio" class="form-control" value="fatt3"> 10.000.000 € - 50.000.000 €
-          <input ng-model="vm.newAzienda.fatturato" type="radio" class="form-control" value="fatt4"> 50.000.000+ €
-    </div>
-    <div class="form-group">
-      <label for="">Commesse / Commesse TOT</label>
-      <input ng-model="vm.newAzienda.commesse" type="number" class="form-control" id="powers" placeholder="Commesse"> /
-      <input ng-model="vm.newAzienda.commesseTot" type="number" class="form-control" id="powers" placeholder="Commesse TOT">
-    </div>
-    <button ng-click="vm.saveMyAzienda(vm.newAzienda);" type="submit" class="btn btn-default">Salva</button>
-  </div>
+<br/><br/> -->
+
+<div class="md-padding selectdemoBasicUsage" ng-cloak="" layout="column">
+        <md-card>
+            <md-card-title>
+              <md-card-title-text>
+                <span class="md-headline">Inserire dati azienda</span>
+                <!-- <span class="md-subhead">Tell us a little about you.</span> -->
+              </md-card-title-text>
+            </md-card-title>
+
+            <md-card-content>
+              <div layout="row">
+                <md-input-container>
+                  <label>Ragione sociale</label>
+                  <input ng-model="vm.newAzienda.nome">
+                </md-input-container>
+
+                <md-input-container>
+                  <label>Tipologia</label>
+                  <md-select ng-model="vm.newAzienda.tipo">
+                    <md-option value="alimentari">INDUSTRIE ALIMENTARI</md-option>
+                    <md-option value="bevande">INDUSTRIA DELLE BEVANDE</md-option>
+                    <md-option value="tabacco">INDUSTRIA DEL TABACCO</md-option>
+                    <md-option value="tessili">INDUSTRIE TESSILI</md-option>
+                    <md-option value="abbigliamento">CONFEZIONE DI ARTICOLI DI ABBIGLIAMENTO...</md-option>
+                    <md-option value="pelle">FABBRICAZIONE DI ARTICOLI IN PELLE E SIMILI</md-option>
+                    <md-option value="legno">INDUSTRIA DEL LEGNO E DEI PRODOTTI IN LEGNO E SUGHERO...</md-option>
+                    <md-option value="carta">FABBRICAZIONE DI CARTA E DI PRODOTTI DI CARTA</md-option>
+                    <md-option value="stampa">STAMPA E RIPRODUZIONE DI SUPPORTI REGISTRATI</md-option>
+                    <md-option value="petrolio">FABBRICAZIONE DI COKE E PRODOTTI DERIVANTI DALLA RAFFINAZIONE DEL PETROLIO</md-option>
+                    <md-option value="chimici">FABBRICAZIONE DI PRODOTTI CHIMICI</md-option>
+                    <md-option value="farmaceutici">FABBRICAZIONE DI PRODOTTI FARMACEUTICI DI BASE E DI PREPARATI FARMACEUTICI</md-option>
+                    <md-option value="plastiche">FABBRICAZIONE DI ARTICOLI IN GOMMA E MATERIE PLASTICHE</md-option>
+                    <md-option value="minerali">FABBRICAZIONE DI ALTRI PRODOTTI DELLA LAVORAZIONE DI MINERALI NON METALLIFERI</md-option>
+                    <md-option value="metallurgia">METALLURGIA</md-option>
+                    <md-option value="metallo">FABBRICAZIONE DI PRODOTTI IN METALLO (ESCLUSI MACCHINARI E ATTREZZATURE)</md-option>
+                    <md-option value="computer">FABBRICAZIONE DI COMPUTER E PRODOTTI DI ELETTRONICA E OTTICA...</md-option>
+                    <md-option value="elettriche">FABBRICAZIONE DI APPARECCHIATURE ELETTRICHE...</md-option>
+                    <md-option value="nca">FABBRICAZIONE DI MACCHINARI ED APPARECCHIATURE NCA</md-option>
+                    <md-option value="autoveicoli">FABBRICAZIONE DI AUTOVEICOLI, RIMORCHI E SEMIRIMORCHI</md-option>
+                    <md-option value="trasporti">FABBRICAZIONE DI ALTRI MEZZI DI TRASPORTO</md-option>
+                    <md-option value="mobili">FABBRICAZIONE DI MOBILI</md-option>
+                    <md-option value="manifatturiere">ALTRE INDUSTRIE MANIFATTURIERE</md-option>
+                    <md-option value="riparazione">RIPARAZIONE, MANUTENZIONE ED INSTALLAZIONE DI MACCHINE ED APPARECCHIATURE</md-option>
+                  </md-select>
+                </md-input-container>
+
+                <md-input-container style="margin-right: 10px;">
+                        <label>Dipendenti</label>
+                        <md-select ng-model="vm.newAzienda.dipendenti">
+                                <md-option value="dip1">fino a 10 dipendenti</md-option>
+                                <md-option value="dip2">da 11 a 50 dipendenti</md-option>
+                                <md-option value="dip3">da 51 a 250 dipendenti</md-option>
+                                <md-option value="dip4">oltre 250 dipendenti</md-option>
+                        </md-select>
+                </md-input-container>
+
+                <md-input-container>
+                        <label>Reparti</label>
+                        <md-select ng-model="vm.newAzienda.reparto" multiple="">
+                                <md-option value="{{reparto}}" ng-repeat="reparto in vm.reparti" ng-click="toggleSelection(reparto)">{{reparto}}</md-option>
+                        </md-select>
+                </md-input-container>
+
+                <md-input-container style="margin-right: 10px;">
+                        <label>Fatturato</label>
+                        <md-select ng-model="vm.newAzienda.fatturato">
+                                <md-option value="fatt1">fino a 2.000.000€</md-option>
+                                <md-option value="fatt2">da 2.000.000€ a 10.000.000€</md-option>
+                                <md-option value="fatt3">da 10.000.000€ a 50.000.000€</md-option>
+                                <md-option value="fatt4">oltre 50.000.000€</md-option>
+                        </md-select>
+                </md-input-container>
+                <md-button ng-click="vm.saveMyAzienda(vm.newAzienda)" class="md-primary">Salva</md-button>
+              </div>
+            </md-card-content>
+    </md-card>
 </div>
+
+
+
+
 
 <div class="container">
   <div ng-repeat="dipendente in vm.dipendenti track by $index">
