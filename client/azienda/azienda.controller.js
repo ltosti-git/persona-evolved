@@ -28,7 +28,9 @@
         return AziendaService.getAzienda()
         // then catch promise
         .then(function(data){
-          vm.azienda = data; //console.log(vm.azienda);
+          vm.azienda = data;
+           //console.log(vm.azienda);
+           detailsAzienda(data);
           return
         }).catch(function(err){
           return err;
@@ -51,49 +53,45 @@
         //   return err;
         // });
       };
-      //
-      // vm.google.charts.load('current', {'packages':['line']});
-      // vm.google.charts.setOnLoadCallback(vm.drawChart);
 
-vm.drawChart = function() {
+      google.charts.load('current', {'packages':['corechart']});
+      vm.draw = function() {
+              google.charts.setOnLoadCallback(drawChart);
+      }
 
-         vm.data = new google.visualization.DataTable();
-         vm.data.addColumn('string', 'Month');
-         vm.data.addColumn('number', vm.newAzienda.nome);
-         vm.data.addColumn('number', 'Produttività media imprese circostanti');
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Mesi',  'Nym Corp', 'Aziende limitrofe'],
+          ['Gennaio',  100,      40],
+          ['Febbraio',  117,      46],
+          ['Marzo',  66,       112],
+          ['Aprile',  103,      54],
+          ['Maggio', 80, 91],
+          ["Giugno", 21, 103],
+          ['Luglio', 100, 60],
+          ['Agosto', 51, 52],
+          ['Settembre', 98, 81],
+          ['Ottobre', 30, 40],
+          ['Novembre', 50, 79],
+          ['Dicembre', 52, 103]
+        ]);
 
-         vm.data.addRows([
-           ['Gennaio',  70, 60],
-           ['Febbraio',  75, 63],
-           ['Marzo',  41, 57],
-           ['Aprile',  32, 21],
-           ['Maggio',  61, 80],
-           ['Giugno',   59, 84],
-           ['Luglio',   71, 81],
-           ['Agosto',  62, 90],
-           ['Settembre',  13, 42],
-           ['Ottobre', 50, 30],
-           ['Novembre',  61,  79],
-           ['Dicembre',  66,  84]
-         ]);
+        var options = {
+          title: 'Volume di vendita',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
 
-         vm.options = {
-           chart: {
-             title: 'Volume di vendita su scala mensile',
-             subtitle: 'rispetto alla media dei volumi di vendita delle aziende circostanti'
-           },
-           width: 900,
-           height: 500
-         };
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
 
-         vm.chart = new google.charts.Line(document.getElementById('linechart_material'));
+        chart.draw(data, options);
 
-         vm.chart.draw(vm.data, vm.options);
-};
+      }
 
-      vm.detailsAzienda = function(azienda) {
+
+      var detailsAzienda = function(azienda) {
         //vm.newAzienda = angular.copy(azienda);
-        vm.newAzienda.id = azienda._id;
+        vm.newAzienda._id = azienda._id;
         vm.newAzienda.nome = azienda.nome;
         vm.newAzienda.tipo = azienda.tipo;
         vm.newAzienda.dipendenti = azienda.dipendenti;
@@ -104,7 +102,7 @@ vm.drawChart = function() {
         //$location.path('/azienda/details/' + vm.newAzienda.id);
       }
 
-      vm.saveMyAzienda = function() { //console.log(vm.newAzienda);        
+      vm.saveMyAzienda = function() { //console.log(vm.newAzienda);
         if(!vm.newAzienda.id) { //console.log('save');
         return AziendaService.saveAzienda(vm.newAzienda)
           .then(function(){

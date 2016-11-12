@@ -5,7 +5,6 @@
     'ngRoute',
     'ngResource',
     'ngMaterial',
-    'googlechart',
     'App.azienda'
 
   ]).value('googleChartApiConfig', {
